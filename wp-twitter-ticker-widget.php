@@ -1,7 +1,7 @@
 <?php
 /*
 Plugin Name: WP Twitter Ticker Widget
-Plugin URI: 
+Plugin URI: https://github.com/pablosbrain/wp-twitter-ticker-widget
 Description: WP Twitter Ticker Widget
 Version: 1.0
 Author: Paul Lunneberg
@@ -127,10 +127,10 @@ class WP_Twitter_Ticker_Widget extends WP_Widget {
 function update($new_instance, $old_instance) {
     $instance = $old_instance;
     $instance = $new_instance;
-    //$instance['background_color'] = $new_instance['background_color'];
     return $instance;
 }
-	// Renders Widget
+
+// Renders Widget
 function widget( $args, $instance ) {
     echo $args['before_widget'];
     require_once(dirname(__FILE__).'/tweetsticker.php');
@@ -179,16 +179,11 @@ function widget( $args, $instance ) {
         var randtweetnum = Math.floor((Math.random() * tweettotal) + 1);
         var tweetuserhtml = "<a href='twitter.com/<?php echo $instance['screen_name']; ?>/'>@<?php echo $instance['screen_name']; ?></a> : ";
         var marqueeoptions = {
-            //speed in milliseconds of the marquee
             duration: 15000,
-            //gap in pixels between the tickers
             gap: 50,
             pauseOnHover: true,
-            //time in milliseconds before the marquee will start animating
             delayBeforeStart: 0,
-            //'left' or 'right'
             direction: 'left',
-            //true or false - should the marquee be duplicated to show an effect of continues flow
             duplicated: false
         };
         jQuery(function() {
@@ -203,9 +198,7 @@ function widget( $args, $instance ) {
     
             jQuery( ".tweettickercontainer" ).slideDown(400, function(){
                 jQuery('.tweettickertweetcontent').bind('finished', function(){
-                    //Change text to something else after first loop finishes
                     jQuery(this).marquee('destroy');
-                    //Load new content using Ajax and update the marquee container
                     randtweetnum = Math.floor((Math.random() * tweettotal) + 1);
                     jQuery(this).html(tweetuserhtml+jQuery('.wp-tweet-ticker-tweet:nth-child('+randtweetnum+')').html()).marquee(marqueeoptions);
                 }).marquee(marqueeoptions);
