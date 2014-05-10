@@ -44,7 +44,7 @@
 	**/
  
 	// Session start
-	session_start(); 
+	//session_start(); 
 	
 	// Set timezone. (Modify to match your timezone) If you need help with this, you can find it here. (http://php.net/manual/en/timezones.php)
 	//date_default_timezone_set('Europe/London');
@@ -86,10 +86,10 @@
         $date_format = $instance['twit_date_format'];
         $tweets_to_display = (intval($instance['num_tweets']) > 0 ? intval($instance['num_tweets']) : $tweets_to_display);
 		// Twitter keys (You'll need to visit https://dev.twitter.com and register to get these.
-		$consumerkey         = ($instance['consumer_key'] ?: '');  //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
-		$consumersecret      = ($instance['consumer_secret'] ?: ''); //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
-		$accesstoken         = ($instance['access_token'] ?: ''); //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
-		$accesstokensecret   = ($instance['access_token_secret'] ?: ''); //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		$consumerkey         = ($instance['consumer_key'] ? $instance['consumer_key']: '');  //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		$consumersecret      = ($instance['consumer_secret'] ? $instance['consumer_secret']: ''); //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		$accesstoken         = ($instance['access_token'] ? $instance['access_token']: ''); //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
+		$accesstokensecret   = ($instance['access_token_secret'] ? $instance['access_token_secret']: ''); //"xxxxxxxxxxxxxxxxxxxxxxxxxxx";
 		//echo $consumerkey."<br />".$consumersecret."<br />".$accesstoken."<br />".$accesstokensecret."<br />";
 		// Seconds to cache feed (Default : 1 minute).
 		$cachetime           = 60*max(5,intval($instance['twit_cache_min']));//60*3;
